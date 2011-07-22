@@ -1,0 +1,57 @@
+<%= form_for(@purchase_item) do |f| %>
+  <% if @purchase_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase_item.errors.count, "error") %> prohibited this purchase_item from being saved:</h2>
+
+      <ul>
+      <% @purchase_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :purchase_unitCost %><br />
+    <%= f.text_field :purchase_unitCost %>
+  </div>
+  <div class="field">
+    <%= f.label :vat_amount %><br />
+    <%= f.text_field :vat_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :net_amount %><br />
+    <%= f.text_field :net_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_quantity %><br />
+    <%= f.text_field :purchase_quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_remarks %><br />
+    <%= f.text_field :purchase_remarks %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_item %><br />
+    <%= f.text_field :purchase_item %>
+  </div>
+  <div class="field">
+    <%= f.label :invoice_id %><br />
+    <%= f.text_field :invoice_id %>
+  </div>
+  <div class="field">
+    <%= f.label :inventory_id %><br />
+    <%= f.text_field :inventory_id %>
+  </div>
+  <div class="field">
+    <%= f.label :vat_type %><br />
+    <%= f.text_field :vat_type %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_id %><br />
+    <%= f.text_field :unit_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

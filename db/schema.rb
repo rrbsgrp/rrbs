@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110722081839) do
+ActiveRecord::Schema.define(:version => 20110722092815) do
 
   create_table "categorysales", :force => true do |t|
     t.float    "cs_amount"
@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(:version => 20110722081839) do
     t.float    "void"
     t.float    "servicecharge"
     t.float    "cs_revenue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "purchase_items", :force => true do |t|
+    t.float    "purchase_unitCost"
+    t.float    "vat_amount"
+    t.float    "net_amount"
+    t.float    "purchase_quantity"
+    t.string   "purchase_remarks"
+    t.string   "purchase_item"
+    t.integer  "invoice_id"
+    t.integer  "inventory_id"
+    t.string   "vat_type"
+    t.integer  "unit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

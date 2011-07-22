@@ -1,21 +1,69 @@
-<h1>Listing categorysales</h1>
-
-<table>
+<div class="left"> 
+<h2><a href="#">SALES BY CATEGORY</a></h2>
+<hr />
+<br/>
+<form action="form_action.asp" method="get">
+<table width="500" border="0">
   <tr>
-    <th>Cs amount</th>
+    <td>From:</td>
+    <td><input type="text" name="from" /></td>
+    <td>Restaurant:</td>
+    <td><input type="text" name="restaurant" /></td>
+  </tr>
+  <tr>
+    <td>To:</td>
+    <td><input type="text" name="to" /></td>
+    <td>Branch:</td>
+    <td><input type="text" name="branch" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><input type="submit" value=" Search " /></td>
+  </tr>
+</table>
+</form>
+<br/><br/>
+<br /><br />
+
+</div>
+<div class="right">
+<strong>Change View: </strong>
+<select>
+  <option>Sales by Category</option>
+  <option>Sales by Settlement Type</option>
+  <option>Sales by Server:</option>
+  <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</option>
+  <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settlement Type</option>
+</select>
+</div>
+<div style="clear:both;"></div>
+
+<h2><a href="#">Listing Category Sales</a></h2>
+
+<table border="1">
+  <tr>
+	<th>Date</th>
+	<th>Food </th>
+	<th>Beverage</th>
+	<th>Liquor</th>
+    <th>Amount</th>
     <th>Category</th>
     <th>Employee</th>
     <th>Vat</th>
     <th>Void</th>
-    <th>Servicecharge</th>
-    <th>Cs revenue</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <th>Service Charge</th>
+    <th>Revenue</th>
+    <th>Edit</th>
+ </tr>
 
 <% @categorysales.each do |categorysale| %>
   <tr>
+    <td><%= categorysale.created_at.strftime("%Y-%m-%d") %></td>
+	<td></td>
+	<td></td>
+	<td></td>
     <td><%= categorysale.cs_amount %></td>
     <td><%= categorysale.category_id %></td>
     <td><%= categorysale.employee_id %></td>
@@ -23,13 +71,11 @@
     <td><%= categorysale.void %></td>
     <td><%= categorysale.servicecharge %></td>
     <td><%= categorysale.cs_revenue %></td>
-    <td><%= link_to 'Show', categorysale %></td>
     <td><%= link_to 'Edit', edit_categorysale_path(categorysale) %></td>
-    <td><%= link_to 'Destroy', categorysale, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Categorysale', new_categorysale_path %>
+<%= link_to 'New Category Sale', new_categorysale_path %>

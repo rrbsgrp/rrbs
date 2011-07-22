@@ -1,0 +1,41 @@
+<h1>Listing purchase_items</h1>
+
+<table>
+  <tr>
+    <th>Purchase unitcost</th>
+    <th>Vat amount</th>
+    <th>Net amount</th>
+    <th>Purchase quantity</th>
+    <th>Purchase remarks</th>
+    <th>Purchase item</th>
+    <th>Invoice</th>
+    <th>Inventory</th>
+    <th>Vat type</th>
+    <th>Unit</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @purchase_items.each do |purchase_item| %>
+  <tr>
+    <td><%= purchase_item.purchase_unitCost %></td>
+    <td><%= purchase_item.vat_amount %></td>
+    <td><%= purchase_item.net_amount %></td>
+    <td><%= purchase_item.purchase_quantity %></td>
+    <td><%= purchase_item.purchase_remarks %></td>
+    <td><%= purchase_item.purchase_item %></td>
+    <td><%= purchase_item.invoice_id %></td>
+    <td><%= purchase_item.inventory_id %></td>
+    <td><%= purchase_item.vat_type %></td>
+    <td><%= purchase_item.unit_id %></td>
+    <td><%= link_to 'Show', purchase_item %></td>
+    <td><%= link_to 'Edit', edit_purchase_item_path(purchase_item) %></td>
+    <td><%= link_to 'Destroy', purchase_item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Purchase item', new_purchase_item_path %>

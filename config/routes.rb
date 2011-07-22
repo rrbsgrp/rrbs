@@ -1,4 +1,6 @@
 Rrbs::Application.routes.draw do
+  resources :purchase_items
+
   resources :categorysales
 
   # The priority is based upon order of creation:
