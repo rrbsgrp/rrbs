@@ -1,0 +1,35 @@
+<h1>Listing categorysales</h1>
+
+<table>
+  <tr>
+    <th>Cs amount</th>
+    <th>Category</th>
+    <th>Employee</th>
+    <th>Vat</th>
+    <th>Void</th>
+    <th>Servicecharge</th>
+    <th>Cs revenue</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categorysales.each do |categorysale| %>
+  <tr>
+    <td><%= categorysale.cs_amount %></td>
+    <td><%= categorysale.category_id %></td>
+    <td><%= categorysale.employee_id %></td>
+    <td><%= categorysale.vat %></td>
+    <td><%= categorysale.void %></td>
+    <td><%= categorysale.servicecharge %></td>
+    <td><%= categorysale.cs_revenue %></td>
+    <td><%= link_to 'Show', categorysale %></td>
+    <td><%= link_to 'Edit', edit_categorysale_path(categorysale) %></td>
+    <td><%= link_to 'Destroy', categorysale, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Categorysale', new_categorysale_path %>
