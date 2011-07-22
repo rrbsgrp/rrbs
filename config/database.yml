@@ -34,7 +34,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: test_app_development
+  database: rrbs_development
   pool: 5
   username: root
   password: zor
@@ -48,7 +48,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: test_app_test
+  database: rrbs_test
   pool: 5
   username: root
   password: zor
@@ -58,7 +58,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: test_app_production
+  database: rrbs_production
   pool: 5
   username: root
   password: zor
