@@ -39,11 +39,11 @@
 </select>
 </div>
 <div style="clear:both;"></div>
-
+<hr />
 <h2><a href="#">Listing Category Sales</a></h2>
-
-<table border="1">
-  <tr>
+<br />
+<table rules="cols" border="1">
+  <tr style="background: #990000; color: #fff;">
 	<th>Date</th>
 	<th>Food </th>
 	<th>Beverage</th>
@@ -54,13 +54,17 @@
     <th>Vat</th>
     <th>Void</th>
     <th>Service Charge</th>
-    <th>Revenue</th>
+    <th>Total Revenue</th>
+    <th>Customer Count</th>
+    <th>Transaction Count</th>
+    <th>Per Person Average</th>
+    <th>Per Transaction Average</th>
     <th>Edit</th>
  </tr>
 
 <% @categorysales.each do |categorysale| %>
   <tr>
-    <td><%= categorysale.created_at.strftime("%Y-%m-%d") %></td>
+    <td><%= categorysale.date %></td>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -71,6 +75,10 @@
     <td><%= categorysale.void %></td>
     <td><%= categorysale.servicecharge %></td>
     <td><%= categorysale.cs_revenue %></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
     <td><%= link_to 'Edit', edit_categorysale_path(categorysale) %></td>
   </tr>
 <% end %>

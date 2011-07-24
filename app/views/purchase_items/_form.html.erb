@@ -10,48 +10,132 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :purchase_unitCost %><br />
-    <%= f.text_field :purchase_unitCost %>
-  </div>
-  <div class="field">
-    <%= f.label :vat_amount %><br />
-    <%= f.text_field :vat_amount %>
-  </div>
-  <div class="field">
-    <%= f.label :net_amount %><br />
-    <%= f.text_field :net_amount %>
-  </div>
-  <div class="field">
-    <%= f.label :purchase_quantity %><br />
-    <%= f.text_field :purchase_quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :purchase_remarks %><br />
-    <%= f.text_field :purchase_remarks %>
-  </div>
-  <div class="field">
-    <%= f.label :purchase_item %><br />
-    <%= f.text_field :purchase_item %>
-  </div>
-  <div class="field">
-    <%= f.label :invoice_id %><br />
-    <%= f.text_field :invoice_id %>
-  </div>
-  <div class="field">
-    <%= f.label :inventory_id %><br />
-    <%= f.text_field :inventory_id %>
-  </div>
-  <div class="field">
-    <%= f.label :vat_type %><br />
-    <%= f.text_field :vat_type %>
-  </div>
-  <div class="field">
-    <%= f.label :unit_id %><br />
-    <%= f.text_field :unit_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table>
+	<tr>
+	<td>
+	<table>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :purchase_date %></td>	
+			<td><%= f.text_field :purchase_date %></td>
+		  </div>
+		<tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :invoice_id %></td>	
+			<td><%= f.text_field :invoice_id %></td>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :supplier_id %></td>		
+			<td><%= f.text_field :supplier_id %></td>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :branch_id %></td>	
+			<td><%= f.select :branch_id, options_for_select([["Ortigas", "1"], ["Greenbelt", "2"]]) %></td>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :purchase_item %></td>	
+			<td><%= f.text_field :purchase_item %></td>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :inventory_id %></td>	
+			<td><%= f.text_field :inventory_id %></td>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :purchase_unitCost %></td>	
+			<td><%= f.text_field :purchase_unitCost %></td>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :purchase_quantity %></td>	
+			<td><%= f.text_field :purchase_quantity %></td>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :unit_id %></td>		
+			<td><%= f.text_field :unit_id %></td>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :purchase_amount %></td>		
+			<td><%= f.text_field :purchase_amount %></td>
+		  </div>
+		</tr>
+		</table>
+	</td>
+	<td>
+		<table>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <div class="form_row">
+			<td><%= f.label :vat_amount %></td>
+			<td><%= f.radio_button :vat_type, "VAT Exempted" %>VAT Exempted</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><%= f.radio_button :vat_type, "VAT Exempted" %>VAT Inclusive</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><%= f.radio_button :vat_type, "VAT Exempted" %>VAT Exclusive</td>
+			</tr>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :vat_amount %></td>	
+			<td><%= f.text_field :vat_amount %></td>
+		  </div>
+		</tr>
+		<tr>
+		  <div class="field">
+			<td><%= f.label :net_amount %></td>	
+			<td><%= f.text_field :net_amount %></td>
+		  </div>  
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <div class="actions">
+			<td><%= f.submit %></td>
+		  </div>
+		</tr>
+		</table>
+	</td>
+	</tr>
+</table>
 <% end %>

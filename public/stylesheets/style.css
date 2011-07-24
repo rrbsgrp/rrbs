@@ -1,5 +1,5 @@
 ﻿* {
-	margin: 0;
+	margin:0;
 	padding: 0;
 }
 
@@ -9,6 +9,7 @@ font-family: "Trebuchet MS" Verdana, Arial, Helvetica, sans-serif;
 font-size: 12px;
 line-height: 17px;
 color: #333;
+margin:0px auto;
 }
 
 a {
@@ -22,7 +23,7 @@ color: #111;
 
 #wrap {
 margin: 0 auto;
-width: 780px;
+width: 1000px;
 }
 
 #header {
@@ -54,8 +55,9 @@ font-weight: 100;
 
 #menu {
 height: 30px;
+width: 1045px;
 line-height: 30px;
-background: #3069AE url(../images/menu.jpg) no-repeat;
+background: #3069AE /*url(../images/menu.jpg)*/ repeat-y;
 }
 #menu ul {
 list-style-type: none;
@@ -84,6 +86,7 @@ border: solid gray;
 -moz-box-shadow: 10px 10px 5px #888;
 -webkit-box-shadow: 10px 10px 5px #888;
 box-shadow: 10px 10px 5px #888;
+width: 1000px;
 }
 
 #headerwrap {
@@ -99,7 +102,7 @@ padding-top: 10px;
 .left h2 {
 font-size: 18px;
 font-weight: 100;
-padding: 15px 0 7px 0;
+padding: 0px 0 0px 0;
 }
 .left h2 a {
 text-decoration: none;
@@ -123,7 +126,7 @@ color: #fff;
 font-size: 13px;
 }
 .right ul {
-padding: 10px 0 15px 10px;
+padding: 10px 0 10px 10px;
 list-style-type: none;
 }
 .right ul li a {
@@ -147,12 +150,11 @@ color: #fff;
 
 #sign_box
 {
-
 width:170px; 
 background-color:#fff; 
 border:solid 1px #5ea0c1; 
 padding:8px;
-margin: 31px 0 0 553px;
+margin: 31px 0 0 773px;
 position:absolute;
 display:none;
 -moz-border-radius-topleft:6px;
@@ -162,6 +164,7 @@ display:none;
 -webkit-border-bottom-left-radius:6px;
 -webkit-border-bottom-right-radius:6px;
 }
+
 .sign_in
 {
 background-color:#FFFFFF;

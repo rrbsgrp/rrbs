@@ -1,41 +1,81 @@
-<h1>Listing purchase_items</h1>
-
-<table>
+<div class="left"> 
+<h2><a href="#">VIEW PURCHASES</a></h2>
+<hr />
+<br/>
+<form action="form_action.asp" method="get">
+<table width="500" border="0">
   <tr>
-    <th>Purchase unitcost</th>
-    <th>Vat amount</th>
-    <th>Net amount</th>
-    <th>Purchase quantity</th>
-    <th>Purchase remarks</th>
-    <th>Purchase item</th>
+    <td>Invoice Number:</td>
+    <td><input type="text" name="invoice_number" /></td>
+    <td>Category:</td>
+    <td><input type="text" name="category" /></td>
+  </tr>
+  <tr>
+    <td>Branch:</td>
+    <td><input type="text" name="branch" /></td>
+    <td>Sub Category:</td>
+    <td><input type="text" name="subcategory" /></td>
+  </tr>
+  <tr>
+    <td>From:</td>
+    <td><input type="text" name="from" /></td>
+    <td>Item:</td>
+    <td><input type="text" name="item" /></td>
+  </tr>
+  <tr>
+    <td>To:</td>
+    <td><input type="text" name="to" /></td>
+    <td>Supplier:</td>
+    <td><input type="text" name="supplier" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><input type="submit" value=" Search " /></td>
+  </tr>
+</table>
+</form>
+<br/><br/>
+
+</div>
+
+<div class="right"></div>
+<div style="clear: both;"></div>
+<table border="1">
+  <tr>
+	<th>Date</th>
     <th>Invoice</th>
-    <th>Inventory</th>
-    <th>Vat type</th>
-    <th>Unit</th>
-    <th></th>
-    <th></th>
-    <th></th>
+	<th>Branch</th>
+	<th>Supplier</th>
+	<th>Item</th>
+	<th>Quantity</th>
+	<th>Unit</th>
+	<th>Unitcost</th>
+    <th>VAT Type</th>
+    <th>VAT Amount</th>
+    <th>Edit</th>
   </tr>
 
 <% @purchase_items.each do |purchase_item| %>
   <tr>
-    <td><%= purchase_item.purchase_unitCost %></td>
-    <td><%= purchase_item.vat_amount %></td>
-    <td><%= purchase_item.net_amount %></td>
-    <td><%= purchase_item.purchase_quantity %></td>
-    <td><%= purchase_item.purchase_remarks %></td>
+    <td><%= purchase_item.purchase_date %></td>
+	<td><%= purchase_item.invoice_id %></td>
+    <td><%= purchase_item.branch_id %></td>
+    <td><%= purchase_item.supplier_id %></td>
     <td><%= purchase_item.purchase_item %></td>
-    <td><%= purchase_item.invoice_id %></td>
-    <td><%= purchase_item.inventory_id %></td>
-    <td><%= purchase_item.vat_type %></td>
+    <td><%= purchase_item.purchase_quantity %></td>
     <td><%= purchase_item.unit_id %></td>
-    <td><%= link_to 'Show', purchase_item %></td>
-    <td><%= link_to 'Edit', edit_purchase_item_path(purchase_item) %></td>
-    <td><%= link_to 'Destroy', purchase_item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= purchase_item.purchase_unitCost %></td>
+	<td><%= purchase_item.vat_type %></td>
+    <td><%= purchase_item.vat_amount %></td>
+    
+	<td><%= link_to 'Edit', edit_purchase_item_path(purchase_item) %></td>
+    
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Purchase item', new_purchase_item_path %>
+<%= link_to 'Add Purchase', new_purchase_item_path %>
