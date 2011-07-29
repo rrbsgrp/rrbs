@@ -1,4 +1,10 @@
 Rrbs::Application.routes.draw do
+  resources :employees
+
+  resources :subcategories
+
+  resources :categories
+
   resources :purchase_items
 
   resources :categorysales
