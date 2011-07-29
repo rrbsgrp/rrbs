@@ -50,7 +50,7 @@
 	<th>Liquor</th>
     <th>Amount</th>
     <th>Category</th>
-    <th>Employee</th>
+    <!--<th>Employee</th>-->
     <th>Vat</th>
     <th>Void</th>
     <th>Service Charge</th>
@@ -69,14 +69,14 @@
 	<td></td>
 	<td></td>
     <td><%= categorysale.cs_amount %></td>
-    <td><%= categorysale.category_id %></td>
-    <td><%= categorysale.employee_id %></td>
+    <td><%= Category.find(categorysale.category_id).category_name %></td>
+    <!--<td><%= Employee.find(categorysale.employee_id).employee_firstName %></td>-->
     <td><%= categorysale.vat %></td>
     <td><%= categorysale.void %></td>
     <td><%= categorysale.servicecharge %></td>
     <td><%= categorysale.cs_revenue %></td>
-    <td></td>
-    <td></td>
+    <td><%= categorysale.customer_count %></td>
+    <td><%= categorysale.transaction_count %></td>
     <td></td>
     <td></td>
     <td><%= link_to 'Edit', edit_categorysale_path(categorysale) %></td>

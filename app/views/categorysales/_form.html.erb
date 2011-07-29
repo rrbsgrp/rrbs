@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+  
   <!--
   <table>
   	<tr>
@@ -37,40 +38,35 @@
     <%= f.text_field :date %>
   </div>-->
   <div class="field">
+    <%= f.label :date %><br />
+    <%= f.text_field :date %>
+  </div>
+  <div class="field">
     <%= f.label "Server Name" %><br />
+   <!--  <%= f.text_field :employee_id %>-->
+  	<%= collection_select('categorysale','employee_id',Employee.all.collect,'id','employee_firstName') %>
+  	<!--<%= select(:employee_id,:employee_id,Employee.all.collect {|e| [e.employee_firstName, e.id]}) %>-->
+  </div>
+  <div class="field">
+   <%= f.label :category_id %><br />
+   <%= collection_select('categorysale','category_id',Category.all.collect,'id','category_name') %>
+  <!-- <%= select(:category_id,:category_id,Category.all.collect {|c| [c.category_name, c.id]}) %>-->
+  <div class="field">
+    <%= f.label "Total Amount" %><br />
     <%= f.text_field :cs_amount %>
   </div>
-  <div class="field">
-    <%= f.label "Food" %><br />
-    <%= f.text_field :cs_amount %>
+    <div class="field">
+    <%= f.label "Total Revenue" %><br />
+    <%= f.text_field :cs_revenue %>
+  </div>
   </div>
   <div class="field">
-    <%= f.label "Beverage" %><br />
-    <%= f.text_field :cs_amount %>
+    <%= f.label "Customer Count" %><br />
+    <%= f.text_field :customer_count %>
   </div>
   <div class="field">
-    <%= f.label "Liquor" %><br />
-    <%= f.text_field :cs_amount %>
-  </div>
-  <div class="field">
-    <%= f.label "Total" %><br />
-    <%= f.text_field :cs_amount %>
-  </div>
-  <div class="field">
-    <%= f.label "Customer" %><br />
-    <%= f.text_field :cs_amount %>
-  </div>
-  <div class="field">
-    <%= f.label "Amount" %><br />
-    <%= f.text_field :cs_amount %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.text_field :category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :employee_id %><br />
-    <%= f.text_field :employee_id %>
+    <%= f.label "Transaction Count" %><br />
+    <%= f.text_field :transaction_count %>
   </div>
   <div class="field">
     <%= f.label "VAT" %><br />
@@ -83,12 +79,7 @@
   <div class="field">
     <%= f.label "Service Charge" %><br />
     <%= f.text_field :servicecharge %>
-  </div>
-  <div class="field">
-    <%= f.label "Total" %><br />
-    <%= f.text_field :cs_revenue %>
-  </div>
-	  
+  </div>	  
   <div class="actions">
     <%= f.submit %>
   </div>
