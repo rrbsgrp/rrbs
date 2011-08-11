@@ -6,36 +6,39 @@
 <table width="500" border="0">
   <tr>
     <td>From:</td>
-    <td><%= date_select("start",:order => [:month, :day, :year]) %></td>
-    <td>Restaurant:</td>
-    <td></td>
+    <td><%= date_select(:start, '', :start_year => 1950) %></td>
+    <td><%= label_tag :restaurant %></td>
+    <td><%= text_field_tag :restaurant  %></td>
   </tr>
   <tr>
     <td>To:</td>
-    <td><%= date_select(:enddate, :order => [:month, :day, :year] ) %></td>
+    <td><%= date_select(:end, '', :start_year => 1950) %></td>
     <td>Branch:</td>
-    <td><input type="text" name="branch" /></td>
+    <td><%= text_field_tag :branch %></td>
   </tr>
   <tr>
-    <td><%= @name %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td><%= submit_tag "Search" %></td>
   <% end %>
   </tr>
 </table>
-<br/><br/>
+<br/>
 
 </div>
 <div class="right">
 <strong>Change View: </strong>
+<br />
+<!--
 <select>
   <option>Sales by Category</option>
   <option>Sales by Settlement Type</option>
   <option>Sales by Server:</option>
   <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</option>
   <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settlement Type</option>
-</select>
+</select>-->
+<%= link_to 'Sales by Category Type', categorysales_path %><br />
+<%= link_to 'Sales by Settlement Type', settlement_sales_path %>
 </div>
 <div style="clear:both;"></div>
 <hr />

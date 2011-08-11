@@ -2,7 +2,6 @@
   <% if @settlement_sale.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@settlement_sale.errors.count, "error") %> prohibited this settlement_sale from being saved:</h2>
-
       <ul>
       <% @settlement_sale.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -48,6 +47,6 @@
     <%= f.text_field :transactionCount %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+  <%= f.submit %>
   </div>
 <% end %>

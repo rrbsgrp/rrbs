@@ -3,7 +3,8 @@ class SettlementSalesController < ApplicationController
   # GET /settlement_sales.xml
   def index
     @settlement_sales = SettlementSale.all
-
+    @settlement_types = SettlementType.all 
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @settlement_sales }

@@ -1,20 +1,20 @@
 <div class="left"> 
-<h2><a href="#">SEARCH SALES BY CATEGORY</a></h2>
+<h2><a href="#">SEARCH CATEGORY SALES</a></h2>
 <hr />
 <br/>
 <% form_tag '/categorysales/search' do %>
 <table width="500" border="0">
   <tr>
 	<td>From:</td>
-	<td><%= date_select("start",:order => [:month, :day, :year]) %></td>
+	<td><%= date_select(:start, '', :start_year => 2010) %></td>
 	<td>Restaurant:</td>
-	<td></td>
+	<td><%= text_field_tag :restaurant  %></td>
   </tr>
   <tr>
 	<td>To:</td>
-	<td><%= date_select(:enddate, :order => [:month, :day, :year] ) %></td>
-	<td>Branch:</td>
-	<td><input type="text" name="branch" /></td>
+	<td><%= date_select(:end, '', :start_year => 2010) %></td>
+	<td><%= label_tag :branch %></td>
+	<td><%= text_field_tag :branch  %></td>
   </tr>
   <tr>
 	<td>&nbsp;</td>
@@ -24,21 +24,23 @@
   </tr>
 </table>
 <br/><br/>
-
 </div>
+
 <div class="right">
-<strong>Change View: </strong>
+<strong> Change View: </strong>
 <select>
-  <option>Sales by Category</option>
-  <option>Sales by Settlement Type</option>
-  <option>Sales by Server:</option>
+  <option> Sales by Category </option>
+  <option> Sales by Settlement Type </option>
+  <option> Sales by Server: </option>
   <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</option>
   <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settlement Type</option>
 </select>
 </div>
+
 <div style="clear:both;"></div>
+
 <hr />
-<h2><a href="#">Listing Category Sales</a></h2>
+<h2><a href="#">SEARCH: <%= p "#{@searchdate} - #{@enddate}"%></a></h2>
 <br />
 <table border="1" width="1000">
   <tr>
@@ -55,11 +57,35 @@
 	<th>Edit</th>
 </tr>
 
-<% @categorysales.each do |categorysale| %>
+<% @categorysales.each do |date,categorysale| %>
   <tr>
-	<td><%= categorysale.date %></td>
-	<td></td>
-    <td><%= link_to "Edit" %></td>
+	<td><%= p "#{date}" %></td>
+	<% food = 0 %>
+	<% liquor = 0 %>
+	<% beverage = 0 %>
+	<% hash = {} %>
+	<% cs_amounts = categorysale.map(&:cs_amount) %>
+	<% category_ids = categorysale.map(&:category_id) %>
+	<% category_ids.size.times { |i| hash[category_ids[i]] = cs_amounts[i]} %>
+	<% hash.each_pair do |ci,amt| %>
+		<% if ci==0 %>
+		<% food = amt %>
+		<% elsif ci==1 %>
+		<% liquor = amt %>
+		<% elsif ci==2 %>
+		<% beverage = amt %>
+	<% end %>
+	<% end %>
+	<td><%= p "#{food}" %></td>
+	<td><%= p "#{liquor}" %></td>
+	<td><%= p "#{beverage}" %></td>
+	<td><%= p "#{categorysale.map(&:vat).first}" %></td>
+	<td><%= p "#{categorysale.map(&:void).first}" %></td>
+	<td><%= p "#{categorysale.map(&:servicecharge).first}" %></td>
+	<td><%= p "#{categorysale.map(&:cs_revenue).first}" %></td>
+	<td><%= p "#{categorysale.map(&:customer_count).first}" %></td>
+	<td><%= p "#{categorysale.map(&:transaction_count).first}" %></td>
+	<td><%= link_to "Edit" %></td>
   </tr>
 <% end %>
 </table>

@@ -1,4 +1,6 @@
 Rrbs::Application.routes.draw do
+  resources :settlement_types
+
   resources :settlement_sales
 
   resources :employees

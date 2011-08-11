@@ -34,11 +34,6 @@ class CategorysalesController < ApplicationController
   # GET /categorysales/new.xml
   def new
     @categorysale = Categorysale.new
-    #fields = [:date,:cs_amount,:category_id]
-    #data = [["08-07-2011",1,0],
-    #        ["08-07-2011",2,1],
-    #        ["08-07-2011",3,3]]
-    #Categorysale.import fields, data
 
     respond_to do |format|
       format.html # new.html.erb
@@ -62,7 +57,7 @@ class CategorysalesController < ApplicationController
           Categorysale.create(:cs_amount =>params[:beverages],:category_id => 2, :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
         end 
         format.html { redirect_to(@categorysale, :notice => 'Categorysale was successfully created.') }
-        #format.xml  { render :xml => @categorysale, :status => :created, :location => @categorysale }
+        format.xml  { render :xml => @categorysale, :status => :created, :location => @categorysale }
       #else
         #format.html { render :action => "new" }
         #format.xml  { render :xml => @categorysale.errors, :status => :unprocessable_entity }
@@ -99,13 +94,15 @@ class CategorysalesController < ApplicationController
   end
   
   def search
-    @searchdate = params[:start]["date(1i)"] + "-" + params[:start]["date(2i)"] + "-" + params[:start]["date(3i)"]
-    @categorysales = Categorysale.where("date = ?",@searchdate)
-    
+    @searchdate = params[:start]['(1i)']+ '-' + params[:start]['(2i)'] + '-' + params[:start]['(3i)']
+    @enddate = params[:end]['(1i)']+ '-' + params[:end]['(2i)'] + '-' + params[:end]['(3i)']
+
+    @categorysales = Categorysale.where("date >= ? AND date <= ?",@searchdate,@enddate).group_by { |cs| cs.date }
+
     respond_to do |format|
       format.html # search.html.erb
       format.xml
-      #render :text => "OK"
     end
+    
   end
 end
