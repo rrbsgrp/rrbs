@@ -2,7 +2,6 @@
   <% if @categorysale.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@categorysale.errors.count, "error") %> prohibited this categorysale from being saved:</h2>
-
       <ul>
       <% @categorysale.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,75 +9,62 @@
       </ul>
     </div>
   <% end %>
-  
-  <!--
-  <table>
-  	<tr>
-  		<th>Amount</th>
-  		<th>Category</th>
-  		<th>Employee</th>
-  		<th>VAT</th>
-  		<th>VOID</th>
-  		<th>Service Charge</th>
-  		<th>Total</th>
-  	</tr>
-  	<tr>
-  		<td><%= f.text_field :cs_amount %></td>
-  		<td><%= f.text_field :category_id %></td>
-  		<td><%= f.text_field :employee_id %></td>
-  		<td><%= f.text_field :vat %></td>
-  		<td><%= f.text_field :void %></td>
-  		<td><%= f.text_field :servicecharge %></td>
-  		<td><%= f.text_field :cs_revenue %></td>
-  	</tr>
-  </table>
-  
-  <div class="field">
-    <%= f.label "Date" %><br />
-    <%= f.text_field :date %>
-  </div>-->
+
   <div class="field">
     <%= f.label :date %><br />
-    <%= f.text_field :date %>
+    <%= text_field_tag :date %>
   </div>
+  
   <div class="field">
     <%= f.label "Server Name" %><br />
-   <!--  <%= f.text_field :employee_id %>-->
   	<%= collection_select('categorysale','employee_id',Employee.all.collect,'id','employee_firstName') %>
-  	<!--<%= select(:employee_id,:employee_id,Employee.all.collect {|e| [e.employee_firstName, e.id]}) %>-->
   </div>
+  
   <div class="field">
-   <%= f.label :category_id %><br />
-   <%= collection_select('categorysale','category_id',Category.all.collect,'id','category_name') %>
-  <!-- <%= select(:category_id,:category_id,Category.all.collect {|c| [c.category_name, c.id]}) %>-->
+   <%= f.label "food" %><br />
+   <%= text_field_tag :food %>
+   </div>
+  
+  <div class="field">
+   <%= f.label "liquor" %><br />
+   <%= text_field_tag :liquor %>
+   </div>
+   
+   <div class="field">
+   <%= f.label "beverages" %><br />
+   <%= text_field_tag :beverages %>
+   </div>
+   <!--<%= collection_select('categorysale','category_id',Category.all.collect,'id','category_name') %>-->
+  
   <div class="field">
     <%= f.label "Total Amount" %><br />
-    <%= f.text_field :cs_amount %>
+    <%= text_field_tag :cs_amount %>
   </div>
-    <div class="field">
+    
+  <div class="field">
     <%= f.label "Total Revenue" %><br />
-    <%= f.text_field :cs_revenue %>
+    <%= text_field_tag :cs_revenue %>
   </div>
-  </div>
+  
   <div class="field">
     <%= f.label "Customer Count" %><br />
-    <%= f.text_field :customer_count %>
+    <%= text_field_tag :customer_count %>
   </div>
   <div class="field">
     <%= f.label "Transaction Count" %><br />
-    <%= f.text_field :transaction_count %>
+    <%= text_field_tag :transaction_count %>
   </div>
   <div class="field">
     <%= f.label "VAT" %><br />
-    <%= f.text_field :vat %>
+    <%= text_field_tag :vat %>
   </div>
   <div class="field">
     <%= f.label "VOID" %><br />
-    <%= f.text_field :void %>
+    <%= text_field_tag :void %>
   </div>
   <div class="field">
     <%= f.label "Service Charge" %><br />
-    <%= f.text_field :servicecharge %>
+    <%= text_field_tag :servicecharge %>
   </div>	  
   <div class="actions">
     <%= f.submit %>

@@ -1,4 +1,6 @@
 Rrbs::Application.routes.draw do
+  resources :settlement_sales
+
   resources :employees
 
   resources :subcategories
@@ -7,7 +9,16 @@ Rrbs::Application.routes.draw do
 
   resources :purchase_items
 
-  resources :categorysales
+  match "/categorysales/search" => "categorysales#search"
+
+  resources :categorysales do
+    collection do
+     get 'search'
+    end
+   end
+  
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.7'
 gem 'mysql2', '< 0.3'
 gem "rake", "0.8.7"
-
+gem "meta_search"
 group :development do
 	gem 'rspec-rails', '2.0.1'
 end

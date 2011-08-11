@@ -1,0 +1,39 @@
+<h1>Listing settlement_sales</h1>
+
+<table>
+  <tr>
+    <th>Ss amount</th>
+    <th>St</th>
+    <th>Stemployee</th>
+    <th>Vat</th>
+    <th>Void</th>
+    <th>Ss date</th>
+    <th>Ss revenue</th>
+    <th>Customercount</th>
+    <th>Transactioncount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @settlement_sales.each do |settlement_sale| %>
+  <tr>
+    <td><%= settlement_sale.ss_amount %></td>
+    <td><%= settlement_sale.st_id %></td>
+    <td><%= settlement_sale.stemployee_id %></td>
+    <td><%= settlement_sale.vat %></td>
+    <td><%= settlement_sale.void %></td>
+    <td><%= settlement_sale.ss_date %></td>
+    <td><%= settlement_sale.ss_revenue %></td>
+    <td><%= settlement_sale.customerCount %></td>
+    <td><%= settlement_sale.transactionCount %></td>
+    <td><%= link_to 'Show', settlement_sale %></td>
+    <td><%= link_to 'Edit', edit_settlement_sale_path(settlement_sale) %></td>
+    <td><%= link_to 'Destroy', settlement_sale, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Settlement sale', new_settlement_sale_path %>

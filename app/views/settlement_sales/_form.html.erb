@@ -1,0 +1,53 @@
+<%= form_for(@settlement_sale) do |f| %>
+  <% if @settlement_sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@settlement_sale.errors.count, "error") %> prohibited this settlement_sale from being saved:</h2>
+
+      <ul>
+      <% @settlement_sale.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ss_amount %><br />
+    <%= f.text_field :ss_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :st_id %><br />
+    <%= f.text_field :st_id %>
+  </div>
+  <div class="field">
+    <%= f.label :stemployee_id %><br />
+    <%= f.text_field :stemployee_id %>
+  </div>
+  <div class="field">
+    <%= f.label :vat %><br />
+    <%= f.text_field :vat %>
+  </div>
+  <div class="field">
+    <%= f.label :void %><br />
+    <%= f.text_field :void %>
+  </div>
+  <div class="field">
+    <%= f.label :ss_date %><br />
+    <%= f.date_select :ss_date %>
+  </div>
+  <div class="field">
+    <%= f.label :ss_revenue %><br />
+    <%= f.text_field :ss_revenue %>
+  </div>
+  <div class="field">
+    <%= f.label :customerCount %><br />
+    <%= f.text_field :customerCount %>
+  </div>
+  <div class="field">
+    <%= f.label :transactionCount %><br />
+    <%= f.text_field :transactionCount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
