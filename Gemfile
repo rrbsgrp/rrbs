@@ -4,6 +4,8 @@ gem 'rails', '3.0.7'
 gem 'mysql2', '< 0.3'
 gem "rake", "0.8.7"
 gem "meta_search"
+gem 'jquery-rails'
+gem 'client_side_validations'
 group :development do
 	gem 'rspec-rails', '2.0.1'
 end

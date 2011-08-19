@@ -10,43 +10,182 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :ss_amount %><br />
-    <%= f.text_field :ss_amount %>
-  </div>
-  <div class="field">
-    <%= f.label :st_id %><br />
-    <%= f.text_field :st_id %>
-  </div>
-  <div class="field">
-    <%= f.label :stemployee_id %><br />
-    <%= f.text_field :stemployee_id %>
-  </div>
-  <div class="field">
-    <%= f.label :vat %><br />
-    <%= f.text_field :vat %>
-  </div>
-  <div class="field">
-    <%= f.label :void %><br />
-    <%= f.text_field :void %>
-  </div>
-  <div class="field">
-    <%= f.label :ss_date %><br />
-    <%= f.date_select :ss_date %>
-  </div>
-  <div class="field">
-    <%= f.label :ss_revenue %><br />
-    <%= f.text_field :ss_revenue %>
-  </div>
-  <div class="field">
-    <%= f.label :customerCount %><br />
-    <%= f.text_field :customerCount %>
-  </div>
-  <div class="field">
-    <%= f.label :transactionCount %><br />
-    <%= f.text_field :transactionCount %>
-  </div>
-  <div class="actions">
-  <%= f.submit %>
-  </div>
+<br/>
+	<table width="900" border="0">
+	  <tr>
+	    <td>Date:</td>
+	    <td><%= f.date_select :ss_date %></td>
+	    <td>&nbsp;</td>
+	    <td>Branch:</td>
+	    <td><%= text_field_tag :branch,'QC',:disabled => true %></td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	    <td><b>SERVER NAME:</b></td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	    <td>Last Name:</td>
+	    <td><%= select("settlement_sale", "employee_id", Employee.all.collect {|p| [ p.employee_lastName, p.id ] }, {:prompt => 'Select Server'}) %></td>
+	    <td></td>
+	    <!--<%= collection_select(:settlement_sale,:employee_id,Employee.all.collect,'id','employee_firstName') %>-->
+	    <td>First Name:</td>
+	    <td><%= select("settlement_sale", "employee_id", Employee.all.collect {|p| [ p.employee_firstName, p.id ] }, {:prompt => 'Select Server'}) %></td>
+	  </tr>
+	  <tr>
+	    <td>Cash:</td>
+	    <td><%= text_field_tag :cash %></td>
+	    <td>&nbsp;</td>
+	    <td>Comp91:</td>
+	    <td><%= text_field_tag :comp91 %></td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>Comp92:</td>
+	    <td><%= text_field_tag :comp92 %></td>
+	  </tr>
+	  <tr>
+	    <td>Credit Card:</td>
+	    <td><%= text_field_tag :creditcard %></td>
+	    <td>&nbsp;</td>
+	    <td>Comp93:</td>
+	    <td><%= text_field_tag :comp93 %></td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>Comp94:</td>
+	    <td><%= text_field_tag :comp94 %></td>
+	  </tr>
+	  <tr>
+	    <td>Gift Certificate:</td>
+	    <td><%= text_field_tag :giftcertificate %></td>
+	    <td>&nbsp;</td>
+	    <td>Comp95:</td>
+	    <td><%= text_field_tag :comp95 %></td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>Comp96:</td>
+	    <td><%= text_field_tag :comp96 %></td>
+	  </tr>
+	  <tr>
+	    <td>VOIDS:</td>
+	    <td><%= text_field_tag :void %></td>
+	    <td>&nbsp;</td>
+	    <td>Comp97:</td>
+	    <td><%= text_field_tag :comp97 %></td>
+	  </tr>
+	  <tr>
+	    <td>GROSS TOTAL:</td>
+	    <td><%= text_field_tag :grosstotal %></td>
+	    <td>&nbsp;</td>
+	    <td>NET TOTAL:</td>
+	    <td><%= text_field_tag :nettotal %></td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td><b>SALES DATA:</b></td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	    <td><b>DINE IN:</b></td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td><b>DELIVERY:</b></td>
+	    <td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	    <td>Customer Count (CC):</td>
+	    <td><%= text_field_tag :customerCount %></td>
+	    <td>&nbsp;</td>
+	    <td>Delivery Sales (DS):</td>
+	    <td><%= text_field_tag :branch %></td>
+	  </tr>
+	  <tr>
+	    <td>Transaction Count (TC):</td>
+	    <td><%= text_field_tag :transactionCount %></td>
+	    <td>&nbsp;</td>
+	    <td>Transaction Count (TC):</td>
+	    <td><%= text_field_tag :transactionCount %></td>
+	  </tr>
+	  <tr>
+	    <td>Per Person Average (PPA):</td>
+	    <td><%= text_field_tag :branch %></td>
+	    <td>&nbsp;</td>
+	    <td>Per Transaction Average (PTA):</td>
+	    <td><%= text_field_tag :branch %></td>
+	  </tr>
+	  <tr>
+	    <td>Per Transaction Average (PTA):</td>
+	    <td><%= text_field_tag :branch %></td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	    <td><b>TAKE OUT:</b></td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	    <td>Transaction Count (TC):</td>
+	    <td><%= text_field_tag :branch %></td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	  </tr>
+	  
+	  <tr>
+	    <td>Per Transaction Average (PTA):</td>
+	    <td><%= text_field_tag :branch %></td>
+	    <td>&nbsp;</td>
+	    <td></td>
+	    <td><%= f.submit %><%= link_to 'Cancel', settlement_sales_path %></td>
+	  </tr>
+	  <% count = @settlement_type.map(&:id) %>
+	  <% count.reverse! %>
+	  <%= f.fields_for :ssrows do |builder| %>
+	  <tr>
+	  <% settlementtype_id = count.pop %>
+	  <% settlementtype_name = SettlementType.find(settlementtype_id).st_name %></td>
+	  <td><%=  builder.label settlementtype_name %></td>
+	  <%= builder.hidden_field :settlement_type_id, :value => settlementtype_id %>
+	  <td><%=  builder.text_field :ss_amount %></td>
+	  </tr>
+	  <% end %>
+	</table>
+<br/>
 <% end %>

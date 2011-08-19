@@ -1,4 +1,8 @@
 Rrbs::Application.routes.draw do
+  resources :ssrows
+
+  root :to => "index#index"  
+
   resources :settlement_types
 
   resources :settlement_sales

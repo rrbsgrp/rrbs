@@ -1,9 +1,8 @@
 class SettlementSalesController < ApplicationController
-  # GET /settlement_sales
-  # GET /settlement_sales.xml
+
   def index
     @settlement_sales = SettlementSale.all
-    @settlement_types = SettlementType.all 
+    @settlement_types = SettlementType.all
     
     respond_to do |format|
       format.html # index.html.erb
@@ -11,8 +10,6 @@ class SettlementSalesController < ApplicationController
     end
   end
 
-  # GET /settlement_sales/1
-  # GET /settlement_sales/1.xml
   def show
     @settlement_sale = SettlementSale.find(params[:id])
 
@@ -22,29 +19,33 @@ class SettlementSalesController < ApplicationController
     end
   end
 
-  # GET /settlement_sales/new
-  # GET /settlement_sales/new.xml
   def new
     @settlement_sale = SettlementSale.new
-
+    @settlement_type = SettlementType.all
+    count = SettlementType.all.count
+    
+    count.times { @settlement_sale.ssrows.build }
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @settlement_sale }
     end
   end
 
-  # GET /settlement_sales/1/edit
   def edit
     @settlement_sale = SettlementSale.find(params[:id])
   end
 
-  # POST /settlement_sales
-  # POST /settlement_sales.xml
   def create
     @settlement_sale = SettlementSale.new(params[:settlement_sale])
 
     respond_to do |format|
       if @settlement_sale.save
+        Categorysale.transaction do 
+          Categorysale.create(:cs_amount =>params[:food],:category_id => 0, :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
+          Categorysale.create(:cs_amount =>params[:liquor],:category_id => 1, :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
+          Categorysale.create(:cs_amount =>params[:beverages],:category_id => 2, :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
+        end
         format.html { redirect_to(@settlement_sale, :notice => 'Settlement sale was successfully created.') }
         format.xml  { render :xml => @settlement_sale, :status => :created, :location => @settlement_sale }
       else
@@ -54,8 +55,6 @@ class SettlementSalesController < ApplicationController
     end
   end
 
-  # PUT /settlement_sales/1
-  # PUT /settlement_sales/1.xml
   def update
     @settlement_sale = SettlementSale.find(params[:id])
 
@@ -70,8 +69,6 @@ class SettlementSalesController < ApplicationController
     end
   end
 
-  # DELETE /settlement_sales/1
-  # DELETE /settlement_sales/1.xml
   def destroy
     @settlement_sale = SettlementSale.find(params[:id])
     @settlement_sale.destroy

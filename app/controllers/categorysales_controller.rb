@@ -1,6 +1,5 @@
 class CategorysalesController < ApplicationController
-  # GET /categorysales
-  # GET /categorysales.xml
+
   def index
     #@categorysales = Categorysale.all(:order => "date DESC")
     #@categorysales = Categorysale.order(:date).group(:date)
@@ -8,9 +7,7 @@ class CategorysalesController < ApplicationController
     @categorysales = @categorysale.group_by { |cs| cs.date }
    
     respond_to do |format|
-      @name = params[:branch]
-      if params["commit"] == "Search"
-       logger.info "User name: #{@name}"
+      if params[:commit] == :Search
        Categorysale.all(:order => "date ASC")
       else
       format.html # index.html.erb
@@ -19,8 +16,7 @@ class CategorysalesController < ApplicationController
     end
   end
 
-  # GET /categorysales/1
-  # GET /categorysales/1.xml
+
   def show
     @categorysale = Categorysale.find(params[:id])
 
@@ -30,8 +26,7 @@ class CategorysalesController < ApplicationController
     end
   end
 
-  # GET /categorysales/new
-  # GET /categorysales/new.xml
+
   def new
     @categorysale = Categorysale.new
 
@@ -41,32 +36,29 @@ class CategorysalesController < ApplicationController
     end
   end
 
-  # GET /categorysales/1/edit
+
   def edit
     @categorysale = Categorysale.find(params[:id])
   end
 
-  # POST /categorysales
-  # POST /categorysales.xml
+
   def create
     @categorysale = Categorysale.new
     respond_to do |format|
         Categorysale.transaction do 
-          Categorysale.create(:cs_amount =>params[:food],:category_id => 0, :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
-          Categorysale.create(:cs_amount =>params[:liquor],:category_id => 1, :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
-          Categorysale.create(:cs_amount =>params[:beverages],:category_id => 2, :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
+          Categorysale.create(:cs_amount =>params[:food],:category_id => 0,:employee_id=>params[:employee_id], :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
+          Categorysale.create(:cs_amount =>params[:liquor],:category_id => 1,:employee_id=>params[:employee_id], :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
+          Categorysale.create(:cs_amount =>params[:beverages],:category_id => 2,:employee_id=>params[:employee_id], :date => params[:date],:vat =>params[:vat],:void =>params[:void],:servicecharge =>params[:servicecharge],:cs_revenue =>params[:cs_revenue],:transaction_count =>params[:transaction_count],:customer_count =>params[:customer_count]) 
         end 
-        format.html { redirect_to(@categorysale, :notice => 'Categorysale was successfully created.') }
-        format.xml  { render :xml => @categorysale, :status => :created, :location => @categorysale }
+        #format.html { redirect_to(@categorysale, :notice => 'Categorysale was successfully created.') }
+        #format.xml  { render :xml => @categorysale, :status => :created, :location => @categorysale }
       #else
-        #format.html { render :action => "new" }
+        format.html { render :action => "new" }
         #format.xml  { render :xml => @categorysale.errors, :status => :unprocessable_entity }
       #end
     end
   end
 
-  # PUT /categorysales/1
-  # PUT /categorysales/1.xml
   def update
     @categorysale = Categorysale.find(params[:id])
 
@@ -81,8 +73,7 @@ class CategorysalesController < ApplicationController
     end
   end
 
-  # DELETE /categorysales/1
-  # DELETE /categorysales/1.xml
+
   def destroy
     @categorysale = Categorysale.find(params[:id])
     @categorysale.destroy
@@ -103,6 +94,6 @@ class CategorysalesController < ApplicationController
       format.html # search.html.erb
       format.xml
     end
-    
   end
+
 end
